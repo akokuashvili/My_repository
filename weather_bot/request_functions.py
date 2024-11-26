@@ -1,6 +1,9 @@
 import requests
 import json
-from auth import DADATA_TOKEN, OPENWEATHER_TOKEN    # import api tokens
+
+
+DADATA_TOKEN = '<TOKEN>'
+OPENWEATHER_TOKEN = '<TOKEN>'
 
 weather_url = 'http://suggestions.dadata.ru/suggestions/api/4_1/rs/findById/country'
 weather_headers = {
