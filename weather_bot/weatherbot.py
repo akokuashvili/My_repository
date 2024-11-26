@@ -1,7 +1,8 @@
 import telebot
-from auth import TOKEN
 from request_functions import weather_response, country_response
 
+
+TELEGRAM_TOKEN = '<TOKEN>'
 
 bot = telebot.TeleBot(TOKEN)
 
