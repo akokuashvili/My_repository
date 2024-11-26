@@ -2,7 +2,6 @@ import json
 from time import sleep
 from currency.converter import conversion_rate
 from telebot import types, TeleBot
-from auth import TOKEN2
 
 
 class User:
@@ -11,7 +10,9 @@ class User:
         self.rate = 0
 
 
-bot = TeleBot(TOKEN2)
+TELEGRAM_TOKEN = '<TOKEN>'
+
+bot = TeleBot(TELEGRAM_TOKEN)
 users = {}
 
 
