@@ -39,19 +39,6 @@ def curr_list(message):
     bot.send_message(message.chat.id, ans)
 
 
-def valid_amount(message: types.Message):
-    try:
-        amount = abs(float(message.text))
-        val1, val2 = users.get(message.from_user.id).pair
-        rate = users.get(message.from_user.id).rate
-        bot.send_message(message.chat.id, f'{amount} {val1} = {amount * rate:,.1f} {val2}')
-        sleep(1)
-        start(message)
-    except ValueError:
-        bot.send_message(message.chat.id, 'Введите корректное значение:')
-        bot.register_next_step_handler(message, valid_amount)
-
-
 @bot.message_handler(content_types=['text'])
 def valid_pair(message: types.Message):
     try:
@@ -65,6 +52,19 @@ def valid_pair(message: types.Message):
     except Exception:
         bot.send_message(message.chat.id, 'Неверная валютная пара, введите корректную пару:')
         bot.register_next_step_handler(message, valid_pair)
+
+
+def valid_amount(message: types.Message):
+    try:
+        amount = abs(float(message.text))
+        val1, val2 = users.get(message.from_user.id).pair
+        rate = users.get(message.from_user.id).rate
+        bot.send_message(message.chat.id, f'{amount} {val1} = {amount * rate:,.1f} {val2}')
+        sleep(1)
+        start(message)
+    except ValueError:
+        bot.send_message(message.chat.id, 'Введите корректное значение:')
+        bot.register_next_step_handler(message, valid_amount)
 
 
 def take_user_rates(user_id, pair, rate):
